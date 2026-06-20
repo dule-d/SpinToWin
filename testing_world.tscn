@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://xwoncev3ltqr"]
+
+[ext_resource type="PackedScene" uid="uid://1jghi2ycerb0" path="res://glTF/FL_8X8.gltf" id="1_fvrmu"]
+[ext_resource type="PackedScene" uid="uid://41l1c0ev8bis" path="res://Player/player.tscn" id="2_66eke"]
+[ext_resource type="PackedScene" uid="uid://b7uunydcglq74" path="res://glTF/WL_1X1.gltf" id="3_66eke"]
+[ext_resource type="PackedScene" uid="uid://dpju5vaob86n" path="res://Models/key/key.tscn" id="4_jyei7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jyei7"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_mwkse"]
+sky_material = SubResource("ProceduralSkyMaterial_jyei7")
+
+[sub_resource type="Environment" id="Environment_ukbb1"]
+background_mode = 2
+sky = SubResource("Sky_mwkse")
+glow_enabled = true
+
+[node name="TESTING WORLD" type="Node3D" unique_id=1433718429]
+
+[node name="Player" parent="." unique_id=54743462 instance=ExtResource("2_66eke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.154547, 0.89379764, 2.3256073)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1705244120]
+environment = SubResource("Environment_ukbb1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1699152656]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="FL_8X82" parent="." unique_id=1305416730 instance=ExtResource("1_fvrmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.336927, -0.67229533, 4.6257734)
+
+[node name="WL_1X12" parent="." unique_id=1724294843 instance=ExtResource("3_66eke")]
+transform = Transform3D(-0.004585415, 1.7081052, 0, -1.0175825, -0.0076970384, 0, 0, 0, 1, -2.0665379, -1.2491428, -1.186701)
+
+[node name="Key" parent="." unique_id=1517484739 instance=ExtResource("4_jyei7")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.98546386, 0.06552687, -1.6265609)

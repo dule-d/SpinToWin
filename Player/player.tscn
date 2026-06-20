@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://41l1c0ev8bis"]
+
+[ext_resource type="Script" uid="uid://c5lsxbrl31g7" path="res://Player/player.gd" id="1_l8h54"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2das6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2das6"]
+
+[node name="Player" type="CharacterBody3D" unique_id=54743462]
+script = ExtResource("1_l8h54")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=701854264]
+shape = SubResource("CapsuleShape3D_2das6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1939460458]
+visible = false
+mesh = SubResource("CapsuleMesh_2das6")
+
+[node name="head" type="Node3D" parent="." unique_id=790138044]
+
+[node name="Camera3D" type="Camera3D" parent="head" unique_id=1813367809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=458077448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9819188)
+light_color = Color(1, 1, 0.6862745, 1)
+light_energy = 3.287
+light_specular = 1.176
+spot_range = 170.804
+spot_angle = 35.0
+spot_angle_attenuation = 4.438293
+
+[node name="RayCast3D" type="RayCast3D" parent="head/Camera3D" unique_id=1679114730]
+target_position = Vector3(0, 0, -4)
+
+[node name="CarryObjectMarker" type="Marker3D" parent="head/Camera3D" unique_id=1392204519]
+unique_name_in_owner = true
+transform = Transform3D(-0.030864978, 0, -1.9647576, 0, 1.965, 0, 1.9647576, 0, -0.030864978, 0.393, -0.304, -0.807)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1250208859]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=328409856]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.625
+offset_top = -4.625
+offset_right = 4.625
+offset_bottom = 4.625
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

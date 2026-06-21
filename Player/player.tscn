@@ -13,7 +13,6 @@ script = ExtResource("1_l8h54")
 shape = SubResource("CapsuleShape3D_2das6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1939460458]
-visible = false
 mesh = SubResource("CapsuleMesh_2das6")
 
 [node name="head" type="Node3D" parent="." unique_id=790138044]
@@ -23,11 +22,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=458077448]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9819188)
-light_color = Color(1, 1, 0.6862745, 1)
+light_color = Color(0.89794225, 0.9922096, 0.94322413, 1)
 light_energy = 3.287
 light_specular = 1.176
 spot_range = 170.804
-spot_angle = 35.0
+spot_angle = 59.55
 spot_angle_attenuation = 4.438293
 
 [node name="RayCast3D" type="RayCast3D" parent="head/Camera3D" unique_id=1679114730]
@@ -53,3 +52,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1949013942]
+offset_right = 40.0
+offset_bottom = 40.0

@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 var speed
 const WALK_SPEED = 3.0
-const CROUCH_SPEED = 1.0
+const CROUCH_SPEED = 0.1
 const SPRINT_SPEED = 5.0
 const JUMP_VELOCITY = 3.2
 const SENSITIVITY = 0.0019
@@ -68,12 +68,11 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	
 	# Handle Sprint.
-	if Input.is_action_just_pressed("sprint"):
+	if Input.is_action_pressed("sprint"):
 		speed = SPRINT_SPEED
 	else:
 		speed = WALK_SPEED
 		
-	
 		
 
 	# Get the input direction and handle the movement/deceleration.
@@ -144,7 +143,7 @@ func pick_up_object(object):
 func crouch():
 	if Input.is_action_just_pressed("ctrl"):
 		crouching = !crouching
-		if crouching:
+		if crouching :
 			$CollisionShape3D.shape.height = crouch_height
 			speed = CROUCH_SPEED
 		else:

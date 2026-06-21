@@ -19,12 +19,12 @@ sky_horizon_color = Color(0.06053035, 0.06053035, 0.060530342, 1)
 ground_bottom_color = Color(0.18486533, 0.15720496, 0.12458066, 1)
 ground_horizon_color = Color(0.23972121, 0.24509716, 0.25586018, 1)
 
-[sub_resource type="Sky" id="Sky_7r82s"]
+[sub_resource type="Sky" id="Sky_jq0bc"]
 sky_material = SubResource("ProceduralSkyMaterial_t1d7j")
 
 [sub_resource type="Environment" id="Environment_ta5mg"]
 background_mode = 2
-sky = SubResource("Sky_7r82s")
+sky = SubResource("Sky_jq0bc")
 tonemap_mode = 3
 glow_enabled = true
 fog_light_energy = 0.21
@@ -51,6 +51,7 @@ environment = SubResource("Environment_ta5mg")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=179669214]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
 shadow_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=996080334]
@@ -66,6 +67,7 @@ mouse_filter = 2
 
 [node name="WL_1X13" parent="WORLD" unique_id=1169477721 instance=ExtResource("8_rq8b1")]
 transform = Transform3D(-0.045914326, -13.123633, -0.35755026, 1.2293535, -0.4912053, 0.4288678, -0.012567489, -0.103603475, 43.25818, 27.543234, 12.60092, 8.280947)
+visible = false
 
 [node name="WL_1X14" parent="WORLD" unique_id=1595073929 instance=ExtResource("8_rq8b1")]
 transform = Transform3D(1.1869439, -2.0490785, 0.36641866, 0.23506543, 10.342279, 0.41975793, -0.012360988, -0.08317512, 43.167168, 31.607277, -15.587414, 8.853678)

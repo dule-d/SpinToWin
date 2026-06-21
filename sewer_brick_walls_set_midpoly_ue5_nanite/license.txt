@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sewer Brick Walls Set |MidPoly| |UE5| |NANITE|
+* source:	https://sketchfab.com/3d-models/sewer-brick-walls-set-midpoly-ue5-nanite-27143020c0bb4624aaf4f5257fd603bd
+* author:	MightyPinecone (https://sketchfab.com/Mighty.Pinecone)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sewer Brick Walls Set |MidPoly| |UE5| |NANITE|" (https://sketchfab.com/3d-models/sewer-brick-walls-set-midpoly-ue5-nanite-27143020c0bb4624aaf4f5257fd603bd) by MightyPinecone (https://sketchfab.com/Mighty.Pinecone) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

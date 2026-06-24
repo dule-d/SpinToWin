@@ -1,12 +1,40 @@
 [gd_scene format=3 uid="uid://41l1c0ev8bis"]
 
 [ext_resource type="Script" uid="uid://c5lsxbrl31g7" path="res://Player/player.gd" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://bxfsdynidsfft" path="res://ProgressBars/ProgressBar.gd" id="2_vtle1"]
+[ext_resource type="Texture2D" uid="uid://bdmpeidwj7bjh" path="res://ProgressBars/Stress/stress_level_1.png" id="3_apopc"]
+[ext_resource type="Texture2D" uid="uid://bcleyem3pmn1e" path="res://ProgressBars/Speed/SpeedBar-progres.png" id="3_k53q1"]
+[ext_resource type="Texture2D" uid="uid://djui7iggqlxe3" path="res://ProgressBars/Stress/stress_level_2.png" id="4_5htga"]
+[ext_resource type="Texture2D" uid="uid://b75jfe8lcodxj" path="res://ProgressBars/Speed/SpeedBar-over.png" id="4_fhl08"]
+[ext_resource type="AudioStream" uid="uid://dd6nal2w13hul" path="res://Sounds/footsteps.mp3" id="4_vtle1"]
+[ext_resource type="AudioStream" uid="uid://b5r757dy04iqf" path="res://Sounds/breathing.mp3" id="5_od3ui"]
+[ext_resource type="Texture2D" uid="uid://v1oo5m12nv7t" path="res://ProgressBars/Stress/stress_level_3.png" id="5_p5o4e"]
+[ext_resource type="AudioStream" uid="uid://bfq7xuplelqll" path="res://Sounds/tired.mp3" id="6_00tjw"]
+[ext_resource type="Texture2D" uid="uid://bd8qpuxrs8tcr" path="res://ProgressBars/Stress/stress_level_4.png" id="6_gu6f8"]
+[ext_resource type="Shader" uid="uid://b1rx5vfyn3s7q" path="res://ProgressBars/ui.gdshader" id="7_5htga"]
+[ext_resource type="Shader" uid="uid://fl53p7c5ew1e" path="res://Player/cctv.gdshader" id="8_p5o4e"]
+[ext_resource type="PackedScene" uid="uid://jkl6733dd4vm" path="res://components/HealthComponent.tscn" id="14_gu6f8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2das6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_2das6"]
 
-[node name="Player" type="CharacterBody3D" unique_id=54743462]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2das6"]
+shader = ExtResource("7_5htga")
+shader_parameter/outline_color = Color(1, 0, 0, 1)
+shader_parameter/outline_width = 1.3290000631275
+shader_parameter/glitch_frequency = 1.0000000475
+shader_parameter/glitch_amplitude = 0.0290000013775
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5htga"]
+shader = ExtResource("8_p5o4e")
+shader_parameter/outline_color = Color(1, 0.11372549, 0.32156864, 1)
+shader_parameter/outline_width = 1.0
+shader_parameter/grain_intensity = 0.30000001192093
+shader_parameter/glitch_frequency = 1.0000000475
+shader_parameter/glitch_amplitude = 0.0290000013775
+
+[node name="player" type="CharacterBody3D" unique_id=54743462 groups=["player"]]
 script = ExtResource("1_l8h54")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=701854264]
@@ -21,13 +49,12 @@ mesh = SubResource("CapsuleMesh_2das6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=458077448]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9819188)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.41997278)
 light_color = Color(0.89794225, 0.9922096, 0.94322413, 1)
-light_energy = 3.287
-light_specular = 1.176
-spot_range = 170.804
-spot_angle = 59.55
-spot_angle_attenuation = 4.438293
+light_energy = 2.0
+spot_range = 15.0
+spot_angle = 99.18
+spot_angle_attenuation = 4.924584
 
 [node name="RayCast3D" type="RayCast3D" parent="head/Camera3D" unique_id=1679114730]
 target_position = Vector3(0, 0, -4)
@@ -37,23 +64,91 @@ unique_name_in_owner = true
 transform = Transform3D(-0.030864978, 0, -1.9647576, 0, 1.965, 0, 1.9647576, 0, -0.030864978, 0.393, -0.304, -0.807)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1250208859]
+script = ExtResource("2_vtle1")
+stress_textures = Array[Texture2D]([ExtResource("3_apopc"), ExtResource("4_5htga"), ExtResource("5_p5o4e"), ExtResource("6_gu6f8")])
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=328409856]
+[node name="UIPivot" type="Control" parent="CanvasLayer" unique_id=1965539519]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Stress" type="ProgressBar" parent="CanvasLayer/UIPivot" unique_id=649748903]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 482.0
+offset_top = 7.0
+offset_right = 1337.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 36
+
+[node name="StressIcon" type="TextureRect" parent="CanvasLayer/UIPivot/Stress" unique_id=358072048]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_2das6")
+layout_mode = 0
+offset_left = 1187.0
+offset_top = 670.0
+offset_right = 1247.0
+offset_bottom = 770.0
+scale = Vector2(4, 4)
+
+[node name="Stamina" type="ProgressBar" parent="CanvasLayer/UIPivot" unique_id=1586226360]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 855.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 36
+
+[node name="StaminaBar" type="TextureProgressBar" parent="CanvasLayer/UIPivot" unique_id=1949013942 groups=["player"]]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_5htga")
+layout_mode = 0
+offset_left = 8.0
+offset_top = 880.0
+offset_right = 88.000015
+offset_bottom = 928.0
+scale = Vector2(4, 4)
+fill_mode = 3
+texture_under = ExtResource("3_k53q1")
+texture_progress = ExtResource("4_fhl08")
+
+[node name="Crosshair" type="ColorRect" parent="CanvasLayer/UIPivot" unique_id=328409856]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.625
-offset_top = -4.625
-offset_right = 4.625
-offset_bottom = 4.625
+offset_left = 935.375
+offset_top = 515.375
+offset_right = 944.625
+offset_bottom = 524.625
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1949013942]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="SoundEffects" type="Node" parent="." unique_id=289142110]
+
+[node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="SoundEffects" unique_id=641707256]
+stream = ExtResource("4_vtle1")
+volume_db = -8.727
+
+[node name="BreathingPlayer" type="AudioStreamPlayer" parent="SoundEffects" unique_id=1725428996]
+stream = ExtResource("5_od3ui")
+
+[node name="TiredPlayer" type="AudioStreamPlayer" parent="SoundEffects" unique_id=1398807324]
+stream = ExtResource("6_00tjw")
+volume_db = -17.598
+
+[node name="HealthComponent" parent="." unique_id=1451507191 instance=ExtResource("14_gu6f8")]
+
+[node name="Health" type="Label" parent="HealthComponent" unique_id=1449432306]
+offset_right = 65.0
+offset_bottom = 46.0
+text = "100"
+
+[connection signal="changed" from="CanvasLayer/UIPivot/StaminaBar" to="CanvasLayer" method="_on_stamina_bar_changed"]

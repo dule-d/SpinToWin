@@ -22,6 +22,11 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[global_group]
+
+enemy=""
+player=""
+
 [input]
 
 up={
@@ -76,4 +81,5 @@ ctrl={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"

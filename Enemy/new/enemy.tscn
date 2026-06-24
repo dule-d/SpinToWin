@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://hm2lrip05r2v"]
+
+[ext_resource type="Script" uid="uid://cdm3po5tp6rba" path="res://Enemy/new/enemy.gd" id="1_socus"]
+[ext_resource type="PackedScene" uid="uid://jkl6733dd4vm" path="res://components/HealthComponent.tscn" id="2_c4x5e"]
+[ext_resource type="Script" uid="uid://cf5dy3xyloqjq" path="res://StateMachine/state_machine.gd" id="3_tvgii"]
+[ext_resource type="Script" uid="uid://dndubkbxykreh" path="res://Enemy/new/enemy_wander.gd" id="4_tvgii"]
+[ext_resource type="Script" uid="uid://ct3hkafds0kwt" path="res://Enemy/new/enemy_chase.gd" id="5_jkmb8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2das6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e1gaq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50a8j"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="Enemy" type="CharacterBody3D" unique_id=462317505 groups=["enemy"]]
+script = ExtResource("1_socus")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1154556315]
+shape = SubResource("CapsuleShape3D_2das6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1937848175]
+mesh = SubResource("CapsuleMesh_e1gaq")
+surface_material_override/0 = SubResource("StandardMaterial3D_50a8j")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=347259898]
+avoidance_enabled = true
+
+[node name="HealthComponent" parent="." unique_id=1451507191 instance=ExtResource("2_c4x5e")]
+
+[node name="StateMachine" type="Node" parent="." unique_id=168307379 node_paths=PackedStringArray("InitialState")]
+script = ExtResource("3_tvgii")
+InitialState = NodePath("EnemyWander")
+metadata/_custom_type_script = "uid://cf5dy3xyloqjq"
+
+[node name="EnemyWander" type="Node" parent="StateMachine" unique_id=1761680138]
+script = ExtResource("4_tvgii")
+metadata/_custom_type_script = "uid://dndubkbxykreh"
+
+[node name="EnemyChase" type="Node" parent="StateMachine" unique_id=476654197]
+script = ExtResource("5_jkmb8")
+metadata/_custom_type_script = "uid://ct3hkafds0kwt"
